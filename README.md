@@ -3,6 +3,12 @@
 The project can be built using standard NodeJS:
 
 ```shell
+npm install
+```
+
+and then
+
+```shell
 npm start
 ```
 
