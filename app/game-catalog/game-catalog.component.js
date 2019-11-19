@@ -16,7 +16,6 @@ angular.
         });
 
         vm.submit = function() {
-          debugger;
           Game.submit();
         }
         vm.orderBy = 'ReleaseDate';

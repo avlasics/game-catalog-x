@@ -18,7 +18,6 @@ angular.
         };
 
         vm.submit = function() {
-            debugger;
             vm.game.ReleaseDate = vm.ReleaseDate;
             Game.update({"gameId": vm.game.Id }, vm.game).$promise.then(
               function(data) {
