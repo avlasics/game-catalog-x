@@ -9,7 +9,7 @@
     "@uirouter/angularjs": "1.0.7",
     "angular": "1.7.x",
     "angular-resource": "^1.7.8",
-    "bootstrap": "3.3.x"
+    "bootstrap": "3.4.x"
   },
   "devDependencies": {
     "angular-mocks": "1.7.x",
