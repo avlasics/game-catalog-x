@@ -1,0 +1,180 @@
+<div class="container-fluid">
+    <form name="form" class="css-form" novalidate>
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <a ui-sref="game-catalog">Game Menu</a> > {{$ctrl.game.Name}}
+                </div>
+                <img ng-src="img/games/{{$ctrl.mainImage.ImageUrl}}" class="game" />
+                <div class="game-thumbs">
+                    <div ng-repeat="img in $ctrl.game.Images" style="float:left;">
+                        <img ng-src="img/games/{{img.ImageUrl}}" ng-click="$ctrl.setImage(img)" />
+                    </div>
+                </div>
+                <div class="table">
+                    <div class="row">
+                        <div class="col-md-12" style="clear:both">
+                            <h4>User Reviews</h4>
+                        </div>
+                    </div>
+                    <div ng-repeat="cr in $ctrl.game.CustomerReviews">
+                        <div>
+                            Rating:  {{cr.Rating | stars}}
+                        </div>
+                        <div>
+                            User name: {{cr.UserName}}
+                        </div>
+                        <div>
+                            Review: {{cr.Review}}
+                        </div>
+                        <div>&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div ng-show="$ctrl.editable === true">
+                    <br />
+                    <span style="color:red">* - required fields</span>
+                </div>
+                <div style="float:left">
+                        <h1 ng-show="$ctrl.editable === false">{{$ctrl.game.Name}}</h1>
+                </div>
+                <div style="float:left" ng-show="$ctrl.editable === true">
+                    <label>Name:
+                        <span style="color:red">*</span>
+                        <input type="text" style="width: 400px" ng-model="$ctrl.game.Name" name="name" ng-maxlength="100" required />
+                    </label>
+                    <span ng-show="!form.name.$valid && form.name.$viewValue.length > 0" style="color:red">Name too long!</span>
+                </div>
+                <button type="button" ng-show="$ctrl.editable === false && $ctrl.submitted === false" style="float:right" class="btn btn-primary" ng-click="$ctrl.edit()">{{$ctrl.buttonText}}</button>
+                <div style="clear:both"></div>
+
+                <p ng-show="$ctrl.editable === false">{{$ctrl.game.Description}}</p>
+                <div ng-show="$ctrl.editable === true">
+                    <label>Description:</label><br />
+                    <textarea style="width: 90%; height:75px;" ng-model="$ctrl.game.Description" ng-maxlength="1000" name="description"></textarea>
+                </div>
+                <span ng-show="!form.description.$valid" style="color:red">Description too long!</span>
+                
+                <h4>About</h4>
+                <p ng-show="$ctrl.editable === false">{{$ctrl.game.About}}</p>
+                <div ng-show="$ctrl.editable === true">
+                    <textarea style="width: 90%; height:150px;" ng-model="$ctrl.game.About" ng-maxlength="5000" name="about"></textarea>
+                </div>
+                <span ng-show="!form.about.$valid" style="color:red">About too long!</span>
+
+                <h4>Price</h4>
+                <p ng-show="$ctrl.editable === false">${{$ctrl.game.Price}}</p>
+                <div ng-show="$ctrl.editable === true">
+                    <span style="color:red">*</span>$<input type="number" ng-model="$ctrl.game.Price" name="price" required />
+                </div>
+
+                <h4>Release Date</h4>
+                <p ng-show="$ctrl.editable === false">{{$ctrl.game.ReleaseDate | date: 'yyyy-MM-dd'}}</p>
+                <div ng-show="$ctrl.editable === true">
+                    <input type="date" ng-model="$ctrl.ReleaseDate" name="releaseDate" />
+                </div>
+
+                <h4>Developer</h4>
+                <p ng-show="$ctrl.editable === false">{{$ctrl.game.Developer}}</p>
+                <div ng-show="$ctrl.editable === true">
+                    <input type="text" ng-model="$ctrl.game.Developer" ng-maxlength="100" name="developer" />
+                </div>
+                <span ng-show="!form.developer.$valid" style="color:red">Developer too long!</span>
+                    
+                <h4>Publisher</h4>
+                <p ng-show="$ctrl.editable === false">{{$ctrl.game.Publisher}}</p>
+                <div ng-show="$ctrl.editable === true">
+                    <input type="text" ng-model="$ctrl.game.Publisher" NG-MAXLENGTH="100" name="publisher" />
+                </div>
+                <span ng-show="!form.publisher.$valid" style="color:red">Publisher too long!</span>
+
+                <div class="table">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>System Requirements</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>OS</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span ng-show="$ctrl.editable === false">{{$ctrl.game.SystemRequirements[0].OS}}</span>
+                            <div ng-show="$ctrl.editable === true">
+                                <span style="color:red">*</span>
+                                <select ng-model="$ctrl.game.SystemRequirements[0].OS" name="OS" required>
+                                    <option>Windows 7 64 Bit</option>
+                                    <option>Windows 7</option>
+                                    <option>Windows 10</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>Processor</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span ng-show="$ctrl.editable === false">{{$ctrl.game.SystemRequirements[0].Processor}}</span>
+                            <div ng-show="$ctrl.editable === true">
+                                <input type="text" style="width:500px;" ng-model="$ctrl.game.SystemRequirements[0].Processor" ng-maxlength="200" name="processor" />
+                            </div>
+                            <span ng-show="!form.processor.$valid" style="color:red">Processor too long!</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>Memory (GB)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span ng-show="$ctrl.editable === false">{{$ctrl.game.SystemRequirements[0].Memory}}</span>
+                            <div ng-show="$ctrl.editable === true">
+                                <input type="number" ng-model="$ctrl.game.SystemRequirements[0].Memory" name="memory" />
+                            </div>
+                            <span ng-show="!form.memory.$valid" style="color:red">Memory too long!</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>Graphics</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span ng-show="$ctrl.editable === false">{{$ctrl.game.SystemRequirements[0].Graphics}}</span>
+                            <div ng-show="$ctrl.editable === true">
+                                <input type="text" style="width:500px;" ng-model="$ctrl.game.SystemRequirements[0].Graphics" ng-maxlength="200" name="graphics" />
+                            </div>
+                            <span ng-show="!form.graphics.$valid" style="color:red">Graphics too long!</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>DirectX</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span ng-show="$ctrl.editable === false">{{$ctrl.game.SystemRequirements[0].DirectX}}</span>
+                            <div ng-show="$ctrl.editable === true">
+                                <input type="number" ng-model="$ctrl.game.SystemRequirements[0].DirectX" name="directX" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>Storage (GB)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span ng-show="$ctrl.editable === false">{{$ctrl.game.SystemRequirements[0].Storage}}</span>
+                            <div ng-show="$ctrl.editable === true">
+                                <input type="number" ng-model="$ctrl.game.SystemRequirements[0].Storage" name="storage" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <button ng-show="$ctrl.editable === true" type="submit" ng-click="$ctrl.submit()" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
+            <span ng-show="form.$invalid" class="alert alert-danger" role="alert">There are form errors.  Please correct them to submit form.</span>
+            <div ng-show="$ctrl.success.length > 0" class="alert alert-success" role="alert"><h1>{{$ctrl.success}}</h1></div>
+            <div ng-show="$ctrl.error.length > 0" class="alert alert-danger" role="alert">{{$ctrl.error}}</div>
+            </div>
+        </div>
+    </form>
+</div>

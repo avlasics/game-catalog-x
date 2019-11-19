@@ -1,0 +1,86 @@
+
+body {
+    padding: 20px;
+    font-family: Calibri;
+  }
+  
+  .games {
+    list-style: none;
+  }
+
+  .games li {
+    clear: both;
+    height: 115px;
+  }
+  
+  .thumb {
+    float: left;
+    max-height: 100%;
+    margin: -0.5em 1em 1.5em 0;
+    padding-bottom: 1em;
+    max-width: 100px;
+    overflow: hidden;
+  }
+  
+  .game {
+    background-color: white;
+    border: 1px solid black;
+    float: left;
+    overflow: hidden;
+    height: 90%;
+    margin-bottom: 2em;
+    margin-right: 3em;
+    padding: 2em;
+    width: 90%;
+  }
+  
+  .game-thumbs {
+    list-style: none;
+    margin: 0;
+  }
+  
+  .game-thumbs img {
+    height: 100px;
+    padding: 1em;
+    width: 100px;
+  }
+  
+  .game-thumbs li {
+    background-color: white;
+    border: 1px solid black;
+    display: inline-block;
+    margin: 1em;
+  }
+  
+  .details {
+    clear: both;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .details dt {
+    font-weight: bold;
+  }
+  
+  .details > li {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+  }
+  
+  .details > li > span {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+  .css-form textarea.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+  .css-form select.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" ng-app="gameCatalogXApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Game Catalog X</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="core/core.module.js"></script>
+    <script src="core/stars/stars.filter.js"></script>
+    <script src="core/game/game.module.js"></script>
+    <script src="core/game/game.service.js"></script>
+    <script src="game-catalog/game-catalog.module.js"></script>
+    <script src="game-catalog/game-catalog.component.js"></script>
+    <script src="game-summary/game-summary.module.js"></script>
+    <script src="game-summary/game-summary.component.js"></script>
+  </head>
+  <body>
+    <div ui-view></div>
+  </body>
+</html>

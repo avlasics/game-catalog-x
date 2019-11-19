@@ -1,0 +1,56 @@
+<div class="table">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <h1>Game Catalog X</h1>
+                        <p>
+                            Search:
+                            <input ng-model="$ctrl.query" />
+                        </p>
+                        Sort by:
+                        <select ng-model="$ctrl.orderBy">
+                            <option value="Name">Name</option>
+                            <option value="ReleaseDate">Release Date</option>
+                        </select>
+                        </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                   <div class="alert alert-danger" role="alert" ng-show="$ctrl.error.length > 0">{{$ctrl.error}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col md-11">
+                    <div>
+                        <div class="row" ng-repeat="game in $ctrl.games | filter:$ctrl.query | orderBy: $ctrl.orderBy" style="padding:10px;background-color:aliceblue;clear:both;margin-bottom: 20px;border:solid 1px grey">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-1">
+                                <div style="width:120px;height:120px;margin-left:10px;margin-right:10px; float:right;border:solid 1px steelblue;">
+                                    <div style="width:80px;height:80px;position:relative;top:20px; left: 20px;">
+                                        <a ui-sref="game-summary({gameId: game.Id})">
+                                            <img ng-src="img/games/{{game.Images[0].ImageUrl}}" alt="{{game.Name}}" style="height:100%;width:100%"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <br /><br />
+                                <a ui-sref="game-summary({gameId: game.Id})">{{game.Name}}</a>
+                                <p>{{game.Description}}</p>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      
